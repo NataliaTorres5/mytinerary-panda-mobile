@@ -1,11 +1,13 @@
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
-import { useGetAllCitiesQuery } from '../features/citiesAPI'
+import DetailCard from '../components/detailCard/DetailCard'
 
 export default function Details() {
   return (
-    <View>
-      <Text>Details</Text>
-    </View>
+    <ScrollView>
+    <DetailCard />
+</ScrollView>
   )
 }
+
+//navigation={navigation}

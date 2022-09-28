@@ -1,15 +1,16 @@
 import { View, Text } from 'react-native'
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { useGetAllCitiesQuery } from '../../features/citiesAPI'
 import { useParams } from 'react-router-dom'
 
 export default function DetailCard(props) {
 
-    const id = useParams()
+    const route = useRoute()
 
     const {
         data: cities
-        } = useGetAllCitiesQuery(id)
+        } = useGetAllCitiesQuery(route.params.id)
 
         let city = cities?.response
 
@@ -19,7 +20,8 @@ export default function DetailCard(props) {
 
   return (
     <View>
-      <Text>DetailCard</Text>
+      <Text>{route.params.id}
+      </Text>
     </View>
   )
 }
