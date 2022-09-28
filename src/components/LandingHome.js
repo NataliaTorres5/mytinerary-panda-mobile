@@ -1,14 +1,48 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { StatusBar } from 'expo-status-bar';
+import { ImageBackground, Image, StyleSheet, Text, View } from 'react-native';
 
 export default function LandingHome() {
-  return (
-    <View>
 
-        {/* //imagen como background 
-        //logo 
-        //boton link */}
-      <Text>LandingHome</Text>
+  const image = { uri: "https://i.im.ge/2022/09/28/1EujTY.photo-mobile.jpg" };
+  const logo = {uri: "https://i.im.ge/2022/09/28/1EFqw1.WelcomeIntro.png"};
+
+  const welcome =() => (
+    <View style={styles.container}>
+      <ImageBackground source={image}
+      resizeMode="cover" style={styles.image}>
+      <Image style={styles.logo} source={logo}/>
+      <Text style={styles.text}>Cohort 31</Text>
+      </ImageBackground> 
     </View>
-  )
+    
+  );
+ return(
+  <View>
+      {welcome}
+    </View>
+ )
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  logo: {
+    width: 350,
+    height: 350,
+    justifyContent: "center",
+    paddingLeft: 100,
+  },
+  text: {
+    color: "blue",
+    fontSize: 42,
+    lineHeight: 84,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#000000c0"
+  }
+});
+ 
