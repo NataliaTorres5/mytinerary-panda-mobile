@@ -1,10 +1,14 @@
-import { View, Text, Image, StyleSheet, } from 'react-native'
-import React, {useRef, useState } from 'react'
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
+import React, { useRef, useState } from 'react'
 import { useGetAllCitiesQuery } from '../features/citiesAPI'
 import SearchBar from './SearchBar'
+import { useNavigation } from '@react-navigation/native'
 
+//
 
 export default function cityCards() {
+
+    const navigation = useNavigation()
 
     const [search, setSearch] = useState('')
 
@@ -12,58 +16,82 @@ export default function cityCards() {
         data: cities,
     } = useGetAllCitiesQuery(search)
 
-    const cityPic = (item) => (
-        < View >
+    const cityPic = (item, index) => (
+        <View key={index}>
+
             <Image
                 style={styles.tinyLogo}
                 contentContainerStyle={{
-                    justifyContent: "center",
-                    alignItems: "center"
+                    justifyContent: 'center',
+                    alignItems: 'center'
                 }}
                 source={{ uri: item.photo }} />
-            <Text>{item.city}  </Text>
-            <Text>{item.intro}  </Text>
+                 <Text style={{
+                    width: '50%',
+                    textAlign: 'center',
+                    marginBottom: 10,
+                    marginTop: 3,
+
+
+                }}>{item.city}  </Text>
+                <Text style={{
+                    width: '50%',
+                }}
+                >{item.intro}  </Text>
+
+            <TouchableOpacity
+                onPress={() => navigation.navigate("Details", {id:item._id})}
+            >
+
+                <Text> To see more press here</Text>
+
+
+               
+
+            </TouchableOpacity>
+
         </View>
     )
-    console.log(cities)
 
     return (
         <View
-            style={{ flex: 1, width: "100%" }}
-            contentContainerStyle={{
-                justifyContent: "center",
-                alignItems: "center",
-                height: "90%",
+            style={{
+                width: "100%",
+                alignItems: 'center',
+                justifyContent: 'center'
             }}
         >
-        <Text style={{
-                fontSize: 40,
-                textAlign: "center",
-                padding: 5,
-                textShadowColor: "gray",
-            }} >
-                CITIES
-        </Text>
 
-        <SearchBar 
-        value={search}
-        onChangeText={(search) => setSearch(search) }
-        
-        />
+            <SearchBar
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    marginTop: 20
+                }}
+                value={search}
+                onChangeText={(search) => setSearch(search)}
+            />
 
-            {cities?.response.map(cityPic)}
+            < ScrollView >
+                {cities?.response.map(cityPic)}
+            </ScrollView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     tinyLogo: {
-        width: 80,
-        height: 80,
+        width: '12%',
+        height: '12%',
+        marginBottom: 0,
+        marginTop: 0
     },
 
     cityScreen: {
         alignItems: "center",
+        justifyContent: 'center',
+        width: '100%',
+        height: '100%',
 
     },
 });
