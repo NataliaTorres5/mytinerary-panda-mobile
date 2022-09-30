@@ -26,27 +26,16 @@ export default function cityCards() {
                     alignItems: 'center'
                 }}
                 source={{ uri: item.photo }} />
-                 <Text style={{
-                    width: '50%',
-                    textAlign: 'center',
-                    marginBottom: 10,
-                    marginTop: 3,
+                <Text>
+                    {item.city}  
+                    </Text>
 
-
-                }}>{item.city}  </Text>
-                <Text style={{
-                    width: '50%',
-                }}
-                >{item.intro}  </Text>
+                <Text>{item.intro}  </Text>
 
             <TouchableOpacity
-                onPress={() => navigation.navigate("Details", {id:item._id})}
-            >
+                onPress={() => navigation.navigate("Details", {id:item._id})}>
 
                 <Text> To see more press here</Text>
-
-
-               
 
             </TouchableOpacity>
 
@@ -54,37 +43,28 @@ export default function cityCards() {
     )
 
     return (
-        <View
-            style={{
-                width: "100%",
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}
-        >
+        <View>
 
             <SearchBar
                 style={{
                     width: '100%',
-                    height: '100%',
-                    marginTop: 20
+                    marginTop: 0
                 }}
                 value={search}
                 onChangeText={(search) => setSearch(search)}
             />
 
-            < ScrollView >
+            < View >
                 {cities?.response.map(cityPic)}
-            </ScrollView>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     tinyLogo: {
-        width: '12%',
-        height: '12%',
-        marginBottom: 0,
-        marginTop: 0
+        width: 10,
+        height: 10,
     },
 
     cityScreen: {

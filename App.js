@@ -17,13 +17,6 @@ export default function App() {
     <NavigationContainer>
 
     <Drawer/>
-      
-    {/* <View style={styles.container}>
-      
-      <Text>PANDA XIAO MEI!</Text>
-      <Cities/>
-      <StatusBar style="dark" />
-    </View> */}
     </NavigationContainer>
     
     </Provider>
