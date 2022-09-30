@@ -6,19 +6,14 @@ export default function LandingHome() {
   const image = { uri: "https://i.im.ge/2022/09/28/1EujTY.photo-mobile.jpg" };
   const logo = {uri: "https://i.im.ge/2022/09/28/1EFqw1.WelcomeIntro.png"};
 
-  const welcome =() => (
-    <View style={styles.container}>
+
+ return(
+  <View style={styles.container}>
       <ImageBackground source={image}
       resizeMode="cover" style={styles.image}>
       <Image style={styles.logo} source={logo}/>
       <Text style={styles.text}>Cohort 31</Text>
       </ImageBackground> 
-    </View>
-    
-  );
- return(
-  <View>
-      {welcome}
     </View>
  )
 }
