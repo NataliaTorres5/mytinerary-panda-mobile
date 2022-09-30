@@ -1,11 +1,11 @@
-import { View, Text , FlatList, Animated, Image,SafeAreaView, Dimensions} from 'react-native'
+import { View, Text , FlatList, Animated, Image,SafeAreaView, Dimensions, StyleSheet} from 'react-native'
 import React, { useState, useRef } from 'react'
 import { useGetAllCitiesQuery } from '../features/citiesAPI'
 
 
 
-const width = Dimensions.get("Window").width;
-const height = Dimensions.get("Window").height;
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
 
 const espacioCarousel = width * 0.7;
 const espacio = 10;
@@ -20,7 +20,7 @@ export default function CarouselHome() {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList 
-      data={data}
+      data={cities}
       keyExtractor={(item) => item._id}
       renderItem={({ item, index }) =>{
 
@@ -43,7 +43,7 @@ export default function CarouselHome() {
                                     paddingBottom: 5,
                                     fontSize:20
                                 }}> {city} </Text>
-                    <Image source={{ uri: photo }} style={styles.citie} />
+                    <Image source={{ uri: photo }} style={styles.cities} />
                 </View>
             </View>
         )
@@ -55,7 +55,7 @@ export default function CarouselHome() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: white,
+        backgroundColor: "white",
         alingnItems: "center",
         justifyContent: "center"
     },
