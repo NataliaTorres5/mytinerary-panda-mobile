@@ -7,6 +7,21 @@ import Details from '../screen/Details'
 export default function Stack() {
     const Stack = createNativeStackNavigator()
 
+
+  return (
+    <Stack.Navigator initialRouteName='Cities'>
+       <Stack.Screen options={{
+        headerShown: false,
+       }} name='City' component={Cities} />
+       <Stack.Screen options={{
+        headerShown: false,
+       }} name='Details' component={Details} />
+       <Stack.Screen options={{
+        headerShown: false,
+       }} name='Cities' component={Cities} />
+    </Stack.Navigator>
+  )
+}
     return (
         <Stack.Navigator initialRouteName='Cities'>
             <Stack.Screen options={{
@@ -17,4 +32,3 @@ export default function Stack() {
             }} name='Details' component={Details} />
         </Stack.Navigator>
     )
-}
