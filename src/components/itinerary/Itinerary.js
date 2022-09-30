@@ -23,15 +23,36 @@ export default function itinerary(props){
 
     const itineraryPic = (item) => {
         return(
-            <View>
+            <View
+            style={{
+                width: width,
+                backgroundColor: '#636fa4',
+                padding: '2%',
+          
+              }}>
+                <View
+                 style= {{
+                    alignItems:'center',
+                    backgroundColor: 'lavender',
+                    borderRadius: 15,
+                    padding: '2%',
+                    justifyContent: 'center',
+                    
+                    
+                  }}>
                 <Activity id={item._id} />
-                <Text>{item.name}</Text>
+                <Text
+                 style={{
+                    width:'60%'
+                }}>{item.name}</Text>
                 <Text>{item.city.city}</Text>
-                <Text>{item.price}</Text>
-                <Text>{item.likes}</Text>
-                <Text>{item.tags}</Text>
-                <Text>{item.duration}</Text>
+                <Text> Price: {item.price}</Text>
+                <Text
+                style={{
+                    paddingBottom: 30,
+                }}>Duration of the activity: {item.duration}</Text>
                 < AllComments id={item._id}  />
+                </View>
             </View>
         )
     }

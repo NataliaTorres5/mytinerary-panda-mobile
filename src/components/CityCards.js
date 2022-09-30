@@ -17,25 +17,49 @@ export default function cityCards() {
     } = useGetAllCitiesQuery(search)
 
     const cityPic = (item, index) => (
-        <View key={index}>
+        <View key={index}
+        style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            
+        }} >
 
             <Image
+            resizeMode="cover"
                 style={styles.tinyLogo}
                 contentContainerStyle={{
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}
                 source={{ uri: item.photo }} />
-                <Text>
+                <Text
+                style={{
+                    fontSize: 20,
+                }}>
                     {item.city}  
                     </Text>
 
-                <Text>{item.intro}  </Text>
+                <Text
+                style={{
+                    width:'50%',
+                    fontSize: 12,
+                    paddingVertical: '5%',
+                    textAlign:'center',
+                }}>{item.intro}  </Text>
 
             <TouchableOpacity
+            style= {{
+                paddingHorizontal: '5%',
+                paddingVertical: '2%',
+                backgroundColor: '#636fa4',
+                borderRadius: 10, 
+            }}
                 onPress={() => navigation.navigate("Details", {id:item._id})}>
 
-                <Text> To see more press here</Text>
+                <Text
+                style={{
+                    color: '#fff'
+                }}> See more!</Text>
 
             </TouchableOpacity>
 
@@ -43,18 +67,32 @@ export default function cityCards() {
     )
 
     return (
-        <View>
+        <View
+        style={{
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#636fa4',
+        }}>
 
             <SearchBar
-                style={{
-                    width: '100%',
-                    marginTop: 0
-                }}
+                
                 value={search}
                 onChangeText={(search) => setSearch(search)}
             />
 
-            < View >
+            < View 
+              style={{
+                justifyContent:'center',
+                textAlign: 'center',
+                paddingVertical: 5,
+                backgroundColor: 'lavender',
+                borderRadius: 20,
+                marginVertical: '2%',
+                marginHorizontal: '2%'
+
+            }}>
                 {cities?.response.map(cityPic)}
             </View>
         </View>
@@ -63,15 +101,15 @@ export default function cityCards() {
 
 const styles = StyleSheet.create({
     tinyLogo: {
-        width: 10,
-        height: 10,
+        width: 250,
+        height: 100,
+        marginTop: 20,
+        borderRadius: 10,
     },
 
     cityScreen: {
         alignItems: "center",
         justifyContent: 'center',
-        width: '100%',
-        height: '100%',
 
     },
 });

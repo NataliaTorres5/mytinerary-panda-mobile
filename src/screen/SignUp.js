@@ -4,8 +4,7 @@ import SignUpContent from '../components/user/SignUp'
 
 export default function SignUp() {
   return (
-    <View>
       <SignUpContent/>
-    </View>
+
   )
 }

@@ -22,4 +22,4 @@ export default function Stack() {
     </Stack.Navigator>
   )
 }
-    
+  
