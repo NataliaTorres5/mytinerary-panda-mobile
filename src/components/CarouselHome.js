@@ -1,70 +1,94 @@
-import { View, Text , FlatList, Animated, Image,SafeAreaView, Dimensions} from 'react-native'
+import { View, Text , FlatList, Animated, Image,StyleSheet,SafeAreaView, Dimensions} from 'react-native'
 import React, { useState, useRef } from 'react'
 import { useGetAllCitiesQuery } from '../features/citiesAPI'
 
-
-
-const width = Dimensions.get("Window").width;
-const height = Dimensions.get("Window").height;
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
 
 const espacioCarousel = width * 0.7;
+const espacioContenedor = (width - espacioCarousel) / 2;
 const espacio = 10;
 
 
 export default function CarouselHome() {
-    
-    const [mySearch, setMySearch] = useState("")
-    const { data: cities } = useGetAllCitiesQuery(mySearch)
+
+    const citiesString = ''
+    const scrollX = useRef(new Animated.Value(0)).current;
+    const { data: cities } = useGetAllCitiesQuery(citiesString);
+
     const carouselCities = cities?.response;
 
+    
+    console.log(carouselCities?.length)
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList 
-      data={data}
-      keyExtractor={(item) => item._id}
-      renderItem={({ item, index }) =>{
+    <SafeAreaView style={{
+        width: "100%",
+        height: "100%",
+        
+      }}>
+      <Animated.FlatList
+       onScroll={Animated.event(
+        [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+        { useNativeDriver: true }
+    )}
+    showsHorizontalScrollIndicator={false}
+    horizontal={true}
+    snapToAlignment="start"
+    contentContainerStyle={{
+        paddingTop: 60,
+        marginHorizontal: espacioContenedor
+    }}
+    snapToInterval={espacioCarousel}
+    decelerationRate={0}
+    scrollEventThrottle={16}
+    data={carouselCities}
 
-        let photo = item.photo
-        let city = item.city
+    keyExtractor={(item) => item._id}
+    
+    renderItem={({item,index}) =>{
 
-        return(
-            <View style={{width: espacioCarousel
-            }}>
-                <View style={{
+        let photo = item.photo;
+
+        const inputRange = [
+            (index -1) * espacioCarousel,
+            index * espacioCarousel,
+            (index+1) * espacioCarousel
+        ];
+        const outputRange = [0, -50, 0];
+        const scrollY = scrollX.interpolate({
+            inputRange,
+            outputRange
+        })
+        return (
+            <View style={{width: espacioCarousel}}>
+                <Animated.View
+                style={{
                     marginHorizontal: espacio,
                     padding: espacio,
                     borderRadius: 34,
-                    backgroundColor:"pink",
-                    alignItems: "center",
-                }}>
-                    <Text style={{
-                                    color: 'aliceblue',
-                                    fontWeight: 'bold',
-                                    paddingBottom: 5,
-                                    fontSize:20
-                                }}> {city} </Text>
-                    <Image source={{ uri: photo }} style={styles.citie} />
-                </View>
+                    backgroundColor: '#636fa4',
+                    alignItems: 'center',
+                    transform: [{ translateY: scrollY }],
+                }}
+                >
+                  <Image source={{ uri: photo }} style={{
+                    height: 100,
+                    width: "100%",
+                    height: espacioCarousel *1.2,
+                    resizeMode: "cover",
+                    borderRadius: 24,
+                    margin: 0,
+                    marinBottom: 10,
+                  }} />  
+                </Animated.View>
             </View>
         )
-      }}
-       />
+    }}
+      />
     </SafeAreaView>
   )
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: white,
-        alingnItems: "center",
-        justifyContent: "center"
-    },
-    cities: {
-        width: "100%",
-        height: espacioCarousel *1.2,
-        resizeMode: "cover",
-        borderRadius: 24,
-        margin: 0,
-        marinBottom: 10,
-    }
-})
+
+
+
+
