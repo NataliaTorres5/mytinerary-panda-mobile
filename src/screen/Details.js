@@ -14,7 +14,8 @@ export default function Details() {
 
   return (
 
-    <ScrollView>
+    <ScrollView
+   >
  
       <DetailCard id={route.params.id} />
       <Itinerary id={route.params.id} />
