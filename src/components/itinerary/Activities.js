@@ -17,14 +17,27 @@ console.log(activities)
         <View key={index}
         
         style={{
-            width: '100%'
+            width: '100%',
+            justifyContent:'center',
+            alignItems:'center',
         }}>
 
-            <Text>{item?.name} </Text>
+            <Text
+            
+            style={{
+                width:'90%',
+                textAlign: 'center',
+                padding: '5%',
+                fontSize: 15,
+            }}>{item?.name} </Text>
 
 
             <Image
-                style={styles.tinyLogo}
+                style={{
+                    width: 360,
+                    height:300,
+                    borderRadius:20,
+                }}
                 contentContainerStyle={{
                     justifyContent: 'center',
                     alignItems: 'center'
@@ -48,12 +61,6 @@ console.log(activities)
 
 
 const styles = StyleSheet.create({
-    tinyLogo: {
-        width: 150,
-        height: 150,
-        marginBottom: 0,
-        marginTop: 0
-    },
 
     cityScreen: {
         alignItems: "center",
