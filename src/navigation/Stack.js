@@ -22,13 +22,4 @@ export default function Stack() {
     </Stack.Navigator>
   )
 }
-    return (
-        <Stack.Navigator initialRouteName='Cities'>
-            <Stack.Screen options={{
-                headerShown: false,
-            }} name='City' component={Cities} />
-            <Stack.Screen options={{
-                headerShown: false,
-            }} name='Details' component={Details} />
-        </Stack.Navigator>
-    )
+  
