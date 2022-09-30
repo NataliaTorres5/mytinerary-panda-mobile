@@ -22,6 +22,10 @@ const cityAPI = createApi({
             })
         }),
 
+        getCityId: builder.query ({
+            query: (id) => `/cities/${id}`
+        }),
+
         EditCity: builder.mutation({
             query: (body, id) => ({
                 url: `/cities/${id}`,
@@ -44,4 +48,4 @@ const cityAPI = createApi({
 
 export default cityAPI
 
-export const { useGetAllCitiesQuery, useNewCityAddMutation, useEditCityMutation } = cityAPI
+export const { useGetAllCitiesQuery, useGetCityIdQuery, useNewCityAddMutation, useEditCityMutation } = cityAPI
