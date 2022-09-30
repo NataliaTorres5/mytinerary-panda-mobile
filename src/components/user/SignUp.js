@@ -1,4 +1,4 @@
-import { Button, ScrollView, View, Text, TouchableOpacity, ImageBackground } from 'react-native'
+import {  Image,View, Text, TouchableOpacity, ImageBackground } from 'react-native'
 import React, { useRef, useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler';
 import { useSignUpUserMutation } from '../../features/userAPI'
@@ -48,51 +48,145 @@ export default function SignUp({ navigation }) {
     }
 
     return (
-        <ScrollView>
-            <Text>Sign Up!</Text>
+        <View
+            style={{
+                width: '100%',
+                height: '100%',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: '#636fa4',
 
-            <View>
+            }}>
+                
+
+            <View
+                style={{
+                    width: '90%',
+                    height: '90%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'lavender',
+                    borderRadius: 15,
+
+                }}>
+                    <Image
+                style={{
+                    width: 200,
+                    height:200,
+                }}
+                source={{uri: 'https://i.im.ge/2022/09/30/1cTGzK.Icon.png'}}  />
+
 
                 <TextInput
-                    value={name }
+                style={{
+                    width: 300,
+                    height:50,
+                    justifyContent:'center',
+                    textAlign: 'center',
+                    paddingVertical: 5,
+                    backgroundColor: '#fff',
+                    borderRadius: 20,
+                    marginVertical: '2%'
+
+                }}
+                    value={name}
                     onChangeText={value => handleOnChangeText(value, 'name')}
                     placeholder='What is your name?'
                 />
 
                 <TextInput
-                    value={lastName }
+                 style={{
+                    width: 300,
+                    height:50,
+                    justifyContent:'center',
+                    textAlign: 'center',
+                    paddingVertical: 5,
+                    backgroundColor: '#fff',
+                    borderRadius: 20,
+                    marginVertical: '2%'
+
+                }}
+                    value={lastName}
                     onChangeText={value => handleOnChangeText(value, 'lastName')}
                     placeholder='What is your Last Name? '
                 />
 
                 <TextInput
-                    value={ photo}
+                 style={{
+                    width: 300,
+                    height:50,
+                    justifyContent:'center',
+                    textAlign: 'center',
+                    paddingVertical: 5,
+                    backgroundColor: '#fff',
+                    borderRadius: 20,
+                    marginVertical: '2%'
+
+                }}
+                    value={photo}
                     onChangeText={value => handleOnChangeText(value, 'photo')}
                     placeholder='Your picture URL '
                 />
 
                 <TextInput
-                    value={email }
+                 style={{
+                    width: 300,
+                    height:50,
+                    justifyContent:'center',
+                    textAlign: 'center',
+                    paddingVertical: 5,
+                    backgroundColor: '#fff',
+                    borderRadius: 20,
+                    marginVertical: '2%'
+
+                }}
+                    value={email}
                     onChangeText={value => handleOnChangeText(value, 'email')}
                     placeholder='What is your email'
                 />
 
                 <TextInput
+                 style={{
+                    width: 300,
+                    height:50,
+                    justifyContent:'center',
+                    textAlign: 'center',
+                    paddingVertical: 5,
+                    backgroundColor: '#fff',
+                    borderRadius: 20,
+                    marginVertical: '2%',
+
+                }}
                     value={password}
                     onChangeText={value => handleOnChangeText(value, 'password')}
                     placeholder='****'
                 />
 
-            </View>
+                <TouchableOpacity
+                  style={{
+                    width: 300,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#636fa4',
+                    paddingVertical: '5%',
+                    borderRadius: 18,
+                    marginVertical: '5%',
+                }}
 
-            <TouchableOpacity
-                
-                onPress={handleSignUp}>
+                    onPress={handleSignUp}>
 
-                    <Text> Sign Up!</Text>
+                    <Text
+                    style={{
+                        fontSize: 20,
+                        color: '#fff'
+                    }}> Sign Up!</Text>
 
                 </TouchableOpacity>
 
-        </ScrollView>
+
+            </View>
+
+
+        </View>
     )
 }
