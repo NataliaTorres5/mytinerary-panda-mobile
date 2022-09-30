@@ -5,16 +5,16 @@ import Cities from '../screen/Cities'
 import Details from '../screen/Details'
 
 export default function Stack() {
-const Stack = createNativeStackNavigator()
+    const Stack = createNativeStackNavigator()
 
-  return (
-    <Stack.Navigator initialRouteName='Cities'>
-       <Stack.Screen options={{
-        headerShown: false,
-       }} name='City' component={Cities} />
-       <Stack.Screen options={{
-        headerShown: false,
-       }} name='Details' component={Details} />
-    </Stack.Navigator>
-  )
+    return (
+        <Stack.Navigator initialRouteName='Cities'>
+            <Stack.Screen options={{
+                headerShown: false,
+            }} name='City' component={Cities} />
+            <Stack.Screen options={{
+                headerShown: false,
+            }} name='Details' component={Details} />
+        </Stack.Navigator>
+    )
 }
