@@ -1,19 +1,17 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import CarouselHome from '../components/CarouselHome'
+import { ScrollView } from 'react-native'
 import LandingHome  from '../components/LandingHome';
-import UnderConstruction from '../screen/UnderConstruction'
+import CarouselHome from '../components/CarouselHome'
 
 
 export default function Home() {
 
   return (
-   < View>
-    <CarouselHome/>
+   < ScrollView>
     <LandingHome/>
-   </View>
+    <CarouselHome/>
+   </ScrollView>
   
   )
 }
 //<UnderConstruction/>
-
