@@ -1,7 +1,11 @@
-import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
+import {configureStore} from '@reduxjs/toolkit'
 import cityAPI from './citiesAPI'
-//import userLoggedSlice from './userLoggedSlice'
-//import rechargeSlice from './rechargeSlice'
+import activityAPI from './activityAPI'
+import itineraryAPI from './itineraryAPI'
+import commentAPI from './commentsAPI'
+import { userAPI } from './userAPI'
+import userSlice from './userSlice'
+import rechargeSlice from './rechargeSlice'
 
 export default  configureStore ({
 
@@ -9,15 +13,19 @@ export default  configureStore ({
         //cities : cityReducer, //slice
         cityAPI:cityAPI.reducer, //api
 
-        // itineraries: itineraryReducer,
-        // [itineraryAPI.reducerPath] : itineraryAPI.reducer,
+        logged:userSlice,
+        [userAPI.reducerPath] : userAPI.reducer,
 
-        // [activityAPI.reducerPath] : activityAPI.reducer,
+        //itineraries: itineraryReducer,
+        [itineraryAPI.reducerPath] : itineraryAPI.reducer,
 
-        // logged:userLoggedSlice,
-        // [userAPI.reducerPath] : userAPI.reducer,
+         [activityAPI.reducerPath] : activityAPI.reducer,
 
-        // recharge:rechargeSlice,
+         [commentAPI.reducerPath] : commentAPI.reducer,
+
+        
+
+         recharge:rechargeSlice,
 
 
     },

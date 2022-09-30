@@ -7,6 +7,7 @@ export default function LandingHome() {
   const image = { uri: "https://i.im.ge/2022/09/28/1EujTY.photo-mobile.jpg"};
   const logo = {uri: "https://i.im.ge/2022/09/28/1EFqw1.WelcomeIntro.png"};
 
+
  return(
   <View style={styles.container}>
       <ImageBackground source={image}
