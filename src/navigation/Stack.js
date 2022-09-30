@@ -15,6 +15,9 @@ const Stack = createNativeStackNavigator()
        <Stack.Screen options={{
         headerShown: false,
        }} name='Details' component={Details} />
+       <Stack.Screen options={{
+        headerShown: false,
+       }} name='Cities' component={Cities} />
     </Stack.Navigator>
   )
 }
