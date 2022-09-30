@@ -7,7 +7,6 @@ export default function LandingHome() {
   const image = { uri: "https://i.im.ge/2022/09/28/1EujTY.photo-mobile.jpg"};
   const logo = {uri: "https://i.im.ge/2022/09/28/1EFqw1.WelcomeIntro.png"};
 
-
  return(
   <View style={styles.container}>
       <ImageBackground source={image}
@@ -15,7 +14,7 @@ export default function LandingHome() {
         <Image source={logo} style={styles.logo}></Image>
         <TouchableOpacity
                 style={styles.text}
-                onPress={() => navigation.navigate("Cities",)}>
+                onPress={() => navigation.navigate("Cities")}>
                 <Text>Click Here!!</Text>
             </TouchableOpacity>
       </ImageBackground> 
@@ -29,11 +28,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: '100%',
   },
   image: {
     flex: 1,
-    height: '100%',
     width: '100%',
     display: "flex",
     alignItems: "center",
